@@ -1,5 +1,6 @@
 @import 'config';
 @import 'menu';
+@include font-face(Void, Void);
 
 
 * {
@@ -26,12 +27,20 @@ h3 {
 
     &.lg-heading {
         font-size: 6rem;
+        letter-spacing: 1rem;
+        font-family: 'Void';
+        background: url(../img/logo.svg);
+        background-repeat: no-repeat;
+        padding: 0.5rem 12.5rem;
+        background-size:10rem;
+        background-position:1rem;
     }
 
     &.sm-heading {
         margin-bottom: 2rem;
-        padding: 0.2rem 1rem;
-        background: rgba(lighten($primary-color, 2),0.5);
+        letter-spacing: 0.5rem;
+        padding: 0.2rem 0.2rem;
+        font-family:sans-serif;
     }
 }
 
@@ -52,7 +61,6 @@ header {
 
 main {
     padding: 4rem;
-    //height: 100%;
     min-height: calc(100vh - 60px);
 
     .icons {
@@ -76,46 +84,72 @@ main {
     }
 }
 
-// About Page
+// Restaurant Menu Page
+#about{
+    
 
-.about-info {
-    display: grid;
-    grid-gap: 30px; 
-    grid-template-areas:
-    'bioimage bio bio'
-    'job1 job2 job3';
-    grid-template-columns: repeat(3, 1fr);
+    .sm-heading{
+        text-align: center;
+        color: rgb(216, 40, 40);
+    }
 
-    .bio-image {
-        grid-area: bioimage;
-        margin: auto;
-        border-radius: 50%;
-        border: $secondary-color 3px solid;
-    }
+    table {
+        width: 60%;
+        margin:100px auto;
+        margin-top:-10px;
+        table-layout:fixed;
+        border-collapse: collapse;
+        font-size: 18px;
+        font-family: Arial, Helvetica, sans-serif;
+        counter-reset: row-num 1;
+
+        td {
+            padding:.4em 0 0 0;
+            vertical-align:bottom;
+        }
+        
+        td:first-child {
+            text-align: left;
+            font-weight: 700;
+            span{
+                padding-right:.25em;
+                }
+
+            &.subtext{
+                padding-top:0;
+                padding-left:1.25rem;
+                font-size:15px;
+                font-weight: normal;
+                counter-increment: row-num;
+                
+                &:before{
+                    content: '';
+                }
+            }
+
+            &:before{
+                content: counter(row-num) ". ";
+                padding-right:2em;
+                margin-left:-2em;
+                text-align:right;
+            }
+        }
     
-    .bio {
-        grid-area: bio;
-        font-size: 1.5rem;
-    }
+        td:last-child {
+            text-align:right;
+            width:3em;
     
-    .job-1 {
-        grid-area: job1;
-    }
-    
-    .job-2 {
-        grid-area: job2;
-    }
-    
-    .job-3 {
-        grid-area: job3;
-    }
-    
-    .job { 
-        background: lighten($primary-color, 5);
-        padding: 0.5rem;
-        border-bottom: $secondary-color 5px solid;
-    }
+            span {
+                padding-left:.25em;
+                }
+        }
+
+        .vege {
+            color: rgb(20, 145, 20);
+        }
+    }    
 }
+
 
 // Work/Projects
 .projects {
