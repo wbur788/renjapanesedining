@@ -1,7 +1,7 @@
-$primary-color: rgb(233, 232, 232);
-$secondary-color: rgba(190, 14, 73, 0.877);
+$primary-color: #444;
+$secondary-color: #eece1a;
 $show-home-image: true;
-$home-image: url(../img/bg1a.jpg);
+$home-image: url(../img/background.jpg);
 $background-opacity: 0.9;
 
 @mixin easeOut {
@@ -10,14 +10,14 @@ $background-opacity: 0.9;
 
 @mixin background {
     @if $show-home-image {
-        &.bg-img {
+        &#bg-img {
             background: $home-image;
             background-attachment: fixed;
             background-size: cover;
 
             &:after {
                 content:'';
-                position: fixed;
+                position: absolute;
                 top: 0;
                 right: 0;
                 width: 100%;
@@ -62,30 +62,3 @@ $background-opacity: 0.9;
          @content;
      }
  }
-
- @mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
-	$src: null;
-
-	$extmods: (
-		eot: "?",
-		svg: "#" + str-replace($name, " ", "_")
-	);
-
-	$formats: (
-		otf: "opentype",
-		ttf: "truetype"
-	);
-
-	@each $ext in $exts {
-		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
-		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
-		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
-	}
-
-	@font-face {
-		font-family: quote($name);
-		font-style: $style;
-		font-weight: $weight;
-		src: $src;
-	}
-}
