@@ -79,8 +79,8 @@
     
         .lg-heading {
           margin-top:1rem;
-          margin-left:-1rem;
-          font-size: 4rem;
+          
+          font-size: 3.5rem;
           padding: 0rem 7rem;
           background-size:6.5rem;
           background-position:0rem;
@@ -90,5 +90,18 @@
     
     .projects {
         grid-template-columns: 1fr;
+    }
+
+    #restMenu {
+        table {
+            width:80%;
+        }
+    }
+
+    .menu-nav {
+        margin-top: -30px;
+    }
+    .menu-btn {
+        right:15px;
     }
 }
